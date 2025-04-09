@@ -63,11 +63,11 @@ pipeline {
                         // 파이프라인 단계에서 환경 변수를 설정하는 역할을 한다.
                         withEnv(["DOCKER_IMAGE_VERSION=${dockerImageVersion}"]) {
                             sh 'docker -v'
-                            sh 'echo DOCKER_IMAGE_NAME'
-                            sh 'echo DOCKER_IMAGE_VERSION'
+                            sh 'echo $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_VERSION'
+                            // sh 'echo $DOCKER_IMAGE_VERSION'
                             // sh 'docker images university-api'
-                            // sh 'docker build --no-cache -t university-api:2.5 ./'
-                            // sh 'docker images university-api'
+                            sh 'docker build --no-cache -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_VERSION ./'
+                            sh 'docker image inspect $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_VERSION'
                         }
                     }
                 }
