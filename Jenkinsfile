@@ -35,6 +35,11 @@ pipeline {
             '''
         }
     }
+
+    environment {
+        DOCKER_IMAGE_NAME = 'kimdoyun/university-api'
+    }
+
     stages {
         stage('Maven Build') {
             steps {
@@ -52,13 +57,23 @@ pipeline {
         stage('Image Build & Push') {
             steps {
                 container('docker') {
-                    sh 'docker -v'
-                    sh 'docker images university-api'
-                    sh 'docker build --no-cache -t university-api:2.5 ./'
-                    sh 'docker images university-api'
+                    script {
+                        def dockerImageVersion = "${env.BUILD_NUMBER}"
+                      
+                        // 파이프라인 단계에서 환경 변수를 설정하는 역할을 한다.
+                        withEnv(["DOCKER_IMAGE_VERSION=${dockerImageVersion}"]) {
+                            sh 'docker -v'
+                            sh 'echo DOCKER_IMAGE_NAME'
+                            sh 'echo DOCKER_IMAGE_VERSION'
+                            // sh 'docker images university-api'
+                            // sh 'docker build --no-cache -t university-api:2.5 ./'
+                            // sh 'docker images university-api'
+                        }
+                    }
                 }
             }
         }
+
+
     }
-   
 }
