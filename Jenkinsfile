@@ -33,7 +33,7 @@ spec:
     }
 
     environment {
-        DOCKER_IMAGE_NAME = 'kimdoyun/university-api'
+        DOCKER_IMAGE_NAME = 'kimdoyun0806/university-api'
         DOCKER_CREDENTIALS_ID = 'dockerhub-access'
     }
 
