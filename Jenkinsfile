@@ -72,8 +72,8 @@ pipeline {
                         // - passwordVariable은 자격 증명에서 가져온 비밀번호를 저장하는 환경 변수의 이름을 작성한다.
                         withCredentials([usernamePassword(
                             credentialsId: DOCKER_CREDENTIALS_ID,
-                            usernameVariable: 'DOCKER_USERNAME'),
-                            passwordVariable: 'DOCKER_PASSWORD'
+                            usernameVariable: 'DOCKER_USERNAME',
+                            passwordVariable: 'DOCKER_PASSWORD')
                             ])} {
                                 sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
                         }
@@ -94,6 +94,5 @@ pipeline {
                 }
             }
         }
-
-
-    }
+}
+    
