@@ -24,11 +24,17 @@ pipeline {
                     sh 'ls -al'
                     sh 'mvn -v'
                     // sh 'mvn clean'
-                    sh 'mvn package'
+                    // sh 'mvn package'
                     sh 'ls -al'
                     sh 'ls -al ./target'
                 }
             }
         }
+        stage('Image Build & Push') {
+            steps {
+                sh 'docker -v'
+            }
+        }
     }
+   
 }
