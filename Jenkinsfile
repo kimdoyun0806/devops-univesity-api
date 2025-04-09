@@ -43,11 +43,11 @@ pipeline {
                     sh 'ls -al'
                     sh 'mvn -v'
                     // sh 'mvn clean'
-                    // sh 'mvn package'
-                    sh 'ls -al'
-                    // sh 'ls -al ./target'
+                    sh 'mvn package'
+                    sh 'ls -al' 
+                    sh 'ls -al ./target'
                 }
-            }
+            }               
         }
         stage('Image Build & Push') {
             steps {
