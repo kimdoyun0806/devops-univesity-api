@@ -45,7 +45,7 @@ pipeline {
                     // sh 'mvn clean'
                     // sh 'mvn package'
                     sh 'ls -al'
-                    sh 'ls -al ./target'
+                    // sh 'ls -al ./target'
                 }
             }
         }
