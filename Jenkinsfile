@@ -13,6 +13,25 @@ pipeline {
                 command:
                 - cat
                 tty: true
+              - name: docker
+                image: docker:27.2.0-alpine3.20
+                command:
+                - cat
+                tty: true
+                resources:
+                  requests:
+                    memory: "2Gi"
+                    cpu: "1"
+                  limits:
+                    memory: "4Gi"
+                    cpu: "2"
+                volumeMounts:
+                - mountPath: "/var/run/docker.sock"
+                  name: docker-socket
+              volumes:
+              - name: docker-socket
+                hostPath:
+                  path: "/var/run/docker.sock"
             '''
         }
     }
@@ -32,7 +51,9 @@ pipeline {
         }
         stage('Image Build & Push') {
             steps {
-                sh 'docker -v'
+                container('docker') {
+                    sh 'docker -v'
+                }
             }
         }
     }
