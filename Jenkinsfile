@@ -11,7 +11,7 @@ pipeline {
               - name: maven
                 image: maven:3.9.9-eclipse-temurin-21-alpine
                 command:
-                - cat
+                - cat      
                 tty: true
               - name: docker
                 image: docker:27.2.0-alpine3.20
@@ -53,6 +53,9 @@ pipeline {
             steps {
                 container('docker') {
                     sh 'docker -v'
+                    sh 'docker images university-api'
+                    sh 'docker build --no-cache -t university-api:2.5 ./'
+                    sh 'docker images university-api'
                 }
             }
         }
