@@ -24,6 +24,9 @@ pipeline {
                     sh 'ls -al'
                     sh 'mvn -v'
                     sh 'mvn clean'
+                    sh 'mvn package'
+                    sh 'ls -al'
+                    sh 'ls -al ./target'
                 }
             }
         }
