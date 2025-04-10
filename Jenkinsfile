@@ -105,12 +105,13 @@ pipeline {
         //     }
         // }
 
-        stage('Trigger university-k8s-manifests')
+        stage('Trigger university-k8s-manifests') {
             steps {
                 script {
                     build job: 'university-k8s-manifests'
                 }
             }
+        }
     }
 }
 
