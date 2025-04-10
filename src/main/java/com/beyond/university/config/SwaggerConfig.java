@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 @OpenAPIDefinition(
         info = @Info(
                 title = "University Service",
-                description = "University Service API",
-                version = "v1.0.0"
+                description = "University REST API",
+                version = "v2.3.3"
         )
 )
 public class SwaggerConfig {
