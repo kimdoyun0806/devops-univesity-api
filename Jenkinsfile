@@ -161,4 +161,3 @@ pipeline {
         //         webhookURL: "${DISDISCORD_WEBHOOK_URL}
         // }
     }
-}
