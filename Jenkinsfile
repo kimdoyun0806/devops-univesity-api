@@ -18,13 +18,6 @@ pipeline {
                 command:
                 - cat
                 tty: true
-                resources:
-                  requests:
-                    memory: "2Gi"
-                    cpu: "1"
-                  limits:
-                    memory: "4Gi"
-                    cpu: "2"
                 volumeMounts:
                 - mountPath: "/var/run/docker.sock"
                   name: docker-socket
